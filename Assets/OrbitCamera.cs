@@ -5,11 +5,7 @@ using UnityEngine;
 public class OrbitCamera : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [SerializeField, Range(1f, 20f)] float distance = 5f;
-    public void SetCameraTarget(Transform cameraTarget)
-    {
-        target = cameraTarget;
-    }
+    [SerializeField] float moveSpeed;
 
     private void LateUpdate()
     {
@@ -18,9 +14,7 @@ public class OrbitCamera : MonoBehaviour
             return;
         }
 
-        Vector3 focusPoint = target.position;
-        Vector3 lookDirection = transform.forward;
-        transform.localPosition = focusPoint - lookDirection * distance;
-        transform.localPosition += Vector3.up * 1.25f;
+        Vector3 targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 }
