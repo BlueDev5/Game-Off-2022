@@ -36,7 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.12f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -283,26 +283,26 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.12f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst.Unsafe">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Mdb">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Pdb">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Rocks">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Mdb">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.12f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -676,20 +676,23 @@
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    <Reference Include="Unity.Services.Core.Analytics">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="PPv2URPConverters">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    <Reference Include="Unity.VisualScripting.Shared.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -702,15 +705,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Editor">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
@@ -727,59 +721,100 @@
     <Reference Include="Unity.Rider.Editor">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Services.Core.Analytics">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+    <Reference Include="Unity.VisualScripting.State">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+    <Reference Include="Unity.VisualScripting.Core">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    <Reference Include="ToolbarExtender.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\ToolbarExtender.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    <Reference Include="Unity.2D.IK.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Services.Core.Environments">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+    <Reference Include="Unity.2D.Common.Runtime">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    <Reference Include="Unity.2D.Psdimporter.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    <Reference Include="Unity.2D.Tilemap.Extras.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Runtime">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
         <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    <Reference Include="Unity.2D.SpriteShape.Runtime">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.State">
-        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    <Reference Include="Unity.2D.PixelPerfect">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Path.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Extras">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Runtime">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="PsdPlugin">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Editor">
+        <HintPath>C:\Users\vkm\OneDrive - Moradabad Institute Of Technology\Desktop\Projects\Game Off 2022\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{c8a57258-78c3-2595-8daa-cffb2fc0e46d}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="DebugUtils.csproj">
+      <Project>{1b2352b1-0c99-5e8c-d7fb-54019c88cf8b}</Project>
+      <Name>DebugUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
