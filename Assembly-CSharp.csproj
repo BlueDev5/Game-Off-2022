@@ -59,6 +59,8 @@
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerOneWayPlatformController.cs" />
     <Compile Include="Assets\Scripts\Player\MovingLevel.cs" />
+    <Compile Include="Assets\Portal.cs" />
+    <Compile Include="Assets\OrbitCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

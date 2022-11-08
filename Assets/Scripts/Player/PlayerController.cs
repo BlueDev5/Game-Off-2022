@@ -96,5 +96,25 @@ namespace Game.Player
             transform.localScale = scaler;
         }
         #endregion
+
+        #region Triggers interaction
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out MovingLevel movingLevel))
+            {
+                transform.parent = movingLevel.transform;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.GetComponent<MovingLevel>())
+            {
+                transform.parent = null;
+            }
+        }
+
+        #endregion
     }
 }
