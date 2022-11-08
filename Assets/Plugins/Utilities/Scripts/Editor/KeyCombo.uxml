@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="height: 100%; font-size: 15px; flex-direction: row; display: flex; visibility: visible; overflow: visible; justify-content: space-between;">
+        <ui:Label text="Combo" display-tooltip-when-elided="true" name="Label" style="flex-direction: row; flex-wrap: nowrap; font-size: 12%; visibility: visible; justify-content: space-between; height: auto; width: auto; align-items: stretch; -unity-text-align: middle-left; max-width: 35%; min-width: 16%;" />
+        <uie:EnumField value="None" include-obsolete-values="false" name="Key" type="UnityEngine.KeyCode, UnityEngine" style="width: 25%; font-size: 35%; height: auto; color: rgba(152, 152, 152, 255);" />
+        <ui:Toggle text=" Alt" name="Alt" tabindex="1" style="flex-direction: row; align-items: center; flex-shrink: 0; flex-wrap: nowrap; font-size: 35%; width: auto; height: auto; margin-right: 1px;" />
+        <ui:Toggle name="Ctrl" text=" Ctrl" tabindex="2" style="font-size: 35%; height: auto; width: auto; margin-left: 0; margin-right: 0;" />
+        <ui:Toggle name="Shift" text=" Shift" tabindex="3" style="width: auto; height: auto; font-size: 35%; margin-left: 0; margin-right: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

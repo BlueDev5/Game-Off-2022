@@ -1,0 +1,30 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="UseBackgroundToggle" style="flex-direction: row; flex-basis: 20px; flex-grow: 0; flex-shrink: 0; flex-wrap: nowrap;">
+        <ui:Toggle value="false" style="background-color: rgb(56, 56, 56); -unity-text-align: upper-left; white-space: nowrap; flex-wrap: nowrap; flex-direction: row; width: 15px; flex-basis: 5%;" />
+        <ui:Label text="Use Backgrounds" display-tooltip-when-elided="true" style="white-space: nowrap; -unity-text-align: middle-center; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; width: 330px; background-color: rgb(17, 17, 17); margin-right: 0; flex-basis: 95%;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Backgrounds">
+        <ui:Label text="Background" display-tooltip-when-elided="true" name="BackgroundLabel" style="-unity-text-align: upper-center; font-size: 12px; margin-bottom: 3px; background-color: rgb(70, 70, 70); margin-top: 2px; flex-basis: 15px;" />
+        <uie:FloatField label="Time Per Background" value="5" name="TimePerBackground" style="flex-direction: row; justify-content: flex-start; align-items: flex-end;" />
+        <uie:FloatField label="Background Fade Duration" value="2" name="BackgroundFadeDuration" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Loading">
+        <ui:Label text="Loading" display-tooltip-when-elided="true" name="LoadingLabel" style="-unity-text-align: upper-center; font-size: 12px; margin-bottom: 3px; background-color: rgb(70, 70, 70); margin-top: 2px; flex-basis: 15px;" />
+        <ui:TextField label="Progress Text Format" name="ProgressTextFormat" value="{percent}%" />
+        <uie:EnumField label="Progress Circle Type" name="ProgressCircleType" />
+        <ui:Slider name="ProgressCircleSpeed" label="Progress Circle Speed" style="font-size: 12px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ShowRandomTips" style="flex-direction: row; flex-basis: 20px; flex-grow: 0; flex-shrink: 0; flex-wrap: nowrap;">
+        <ui:Toggle value="false" style="background-color: rgb(56, 56, 56); -unity-text-align: upper-left; white-space: nowrap; flex-wrap: nowrap; flex-direction: row; width: 15px; flex-basis: 5%;" />
+        <ui:Label text="Show Random Tips" display-tooltip-when-elided="true" style="white-space: nowrap; -unity-text-align: middle-center; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; width: 330px; background-color: rgb(17, 17, 17); margin-right: 0; flex-basis: 95%;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="RandomTips">
+        <ui:Label text="Random Tips" display-tooltip-when-elided="true" name="RandomTipsLabel" style="-unity-text-align: upper-center; font-size: 12px; margin-bottom: 3px; background-color: rgb(70, 70, 70); margin-top: 2px; flex-basis: 15px;" />
+        <uie:FloatField label="Time Per Tip" value="4" name="TimePerTip" />
+        <uie:FloatField label="Tip Fade Duration" value="2" name="TipFadeDuration" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ShowSceneDescription" style="flex-direction: row; flex-basis: 20px; flex-grow: 0; flex-shrink: 0; flex-wrap: nowrap;">
+        <ui:Toggle value="false" style="background-color: rgb(56, 56, 56); -unity-text-align: upper-left; white-space: nowrap; flex-wrap: nowrap; flex-direction: row; width: 15px; flex-basis: 5%;" />
+        <ui:Label text="Show Scene Description" display-tooltip-when-elided="true" style="white-space: nowrap; -unity-text-align: middle-center; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; width: 330px; background-color: rgb(17, 17, 17); margin-right: 0; flex-basis: 95%;" />
+    </ui:VisualElement>
+</ui:UXML>
