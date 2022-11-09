@@ -38,6 +38,7 @@ public class MovingLevelController : MonoBehaviour
             else if (Input.GetKey(KeyCode.Mouse0))
             {
                 //TODO: Drag level to mouse position
+                currentLevelDragging.position = MouseWorldPosition();
             }
         }
     }
