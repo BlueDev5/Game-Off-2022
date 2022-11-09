@@ -103,7 +103,7 @@ namespace Game.Player
         {
             if (collision.TryGetComponent(out MovingLevel movingLevel))
             {
-                transform.parent = movingLevel.transform;
+                transform.parent = movingLevel.ParentTransform;
             }
         }
 

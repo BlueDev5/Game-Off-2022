@@ -7,7 +7,7 @@ public class Portal : MonoBehaviour
 {
     bool portalUsed;
     [SerializeField] Portal connectingPortal;
-
+    public Portal ConnectingPortal { get { return connectingPortal; } }
     void UserUsePortal(Transform portalUser)
     {
         portalUser.position = connectingPortal.transform.position;

@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class MovingLevel : MonoBehaviour
 {
+    [SerializeField] Transform parentTransform;
+    public Transform ParentTransform { get { return parentTransform; } }
     Collider2D m_Collider;
     Vector3 offset, screenPoint;
-    bool cursorOnCollider;
+    bool cursorOnCollider, dragging;
     private void Awake()
     {
         m_Collider = GetComponent<Collider2D>();
@@ -25,22 +28,28 @@ public class MovingLevel : MonoBehaviour
                 cursorOnCollider = true;
             }
         }
-    }
 
-    void OnMouseDown()
-    {
         if (cursorOnCollider)
         {
-            screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-            offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-                Input.mousePosition.y, screenPoint.z));
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+                offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
+                    Input.mousePosition.y, screenPoint.z));
+                dragging = true;
+            }
         }
-    }
 
-    void OnMouseDrag()
-    {
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        transform.position = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+        if (Input.GetKey(KeyCode.Mouse0) && dragging)
+        {
+            Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+            parentTransform.position = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            dragging = false;
+        }
     }
 
     Vector3 MouseWorldPosition()
