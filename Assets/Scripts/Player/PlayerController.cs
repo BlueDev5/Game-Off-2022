@@ -40,11 +40,6 @@ namespace Game.Player
 
         void FixedUpdate()
         {
-            if (MovingLevel.Dragging)
-            {
-                return;
-            }
-
             GatherInput();
 
             _rigidbody.velocity = new Vector2(_horizontalMovement * _speed, _rigidbody.velocity.y);
@@ -61,11 +56,6 @@ namespace Game.Player
 
         void Update()
         {
-            if (MovingLevel.Dragging)
-            {
-                return;
-            }
-
             if (_isGrounded)
             {
                 _jumpsLeft = _extraJumps;
@@ -115,6 +105,13 @@ namespace Game.Player
             {
                 transform.parent = collision.transform;
             }
+
+            HandleCameraTarget(collision);
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            HandleCameraTarget(collision);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -122,6 +119,14 @@ namespace Game.Player
             if (collision.GetComponent<MovingLevel>())
             {
                 transform.parent = null;
+            }
+        }
+
+        void HandleCameraTarget(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out CameraCollider cameraCollider))
+            {
+                CameraController.Instance.CheckCameraTarget(cameraCollider);
             }
         }
 
