@@ -65,6 +65,8 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraCollider.cs" />
     <Compile Include="Assets\MovingLevelController.cs" />
+    <Compile Include="Assets\PickupItem.cs" />
+    <Compile Include="Assets\PickupItemManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
