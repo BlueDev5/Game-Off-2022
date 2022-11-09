@@ -10,7 +10,7 @@ public class Portal : MonoBehaviour
     public Portal ConnectingPortal { get { return connectingPortal; } }
     void UserUsePortal(Transform portalUser)
     {
-        portalUser.position = connectingPortal.transform.position;
+        portalUser.position = new Vector3(connectingPortal.transform.position.x, connectingPortal.transform.position.y, portalUser.transform.position.z);
         connectingPortal.UsePortal();
     }
 
