@@ -6,11 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class MovingLevel : MonoBehaviour
 {
-    [SerializeField] Transform parentTransform;
-    public Transform ParentTransform { get { return parentTransform; } }
     Collider2D m_Collider;
     Vector3 offset, screenPoint;
     bool cursorOnCollider, dragging;
+    public static bool Dragging;
     private void Awake()
     {
         m_Collider = GetComponent<Collider2D>();
@@ -37,17 +36,22 @@ public class MovingLevel : MonoBehaviour
                 offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
                     Input.mousePosition.y, screenPoint.z));
                 dragging = true;
+                Dragging = true;
             }
         }
 
         if (Input.GetKey(KeyCode.Mouse0) && dragging)
         {
             Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-            parentTransform.position = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+            transform.position = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            if (Dragging)
+            {
+                Dragging = false;
+            }
             dragging = false;
         }
     }
