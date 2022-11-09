@@ -40,6 +40,11 @@ namespace Game.Player
 
         void FixedUpdate()
         {
+            if (MovingLevel.Dragging)
+            {
+                return;
+            }
+
             GatherInput();
 
             _rigidbody.velocity = new Vector2(_horizontalMovement * _speed, _rigidbody.velocity.y);
@@ -56,6 +61,11 @@ namespace Game.Player
 
         void Update()
         {
+            if (MovingLevel.Dragging)
+            {
+                return;
+            }
+
             if (_isGrounded)
             {
                 _jumpsLeft = _extraJumps;
@@ -95,6 +105,26 @@ namespace Game.Player
             scaler.x *= -1;
             transform.localScale = scaler;
         }
+        #endregion
+
+        #region Triggers interaction
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.GetComponent<MovingLevel>())
+            {
+                transform.parent = collision.transform;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.GetComponent<MovingLevel>())
+            {
+                transform.parent = null;
+            }
+        }
+
         #endregion
     }
 }
