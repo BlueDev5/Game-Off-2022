@@ -19,6 +19,7 @@ public class LineConnectingPortals : MonoBehaviour
         PortalConnector.Instance.OnNewConnectionStarted += PortalConnector_OnNewConnectionStarted;
         PortalConnector.Instance.OnNewConnectionStarting += PortalConnector_OnNewConnectionStarting;
         PortalConnector.Instance.OnNewConnectionEnded += PortalConnector_OnNewConnectionEnded;
+        PortalConnector.Instance.OnConnectionSevered += PortalConnector_OnConnectionSevered;
     }
 
     private void OnDestroy()
@@ -26,6 +27,15 @@ public class LineConnectingPortals : MonoBehaviour
         PortalConnector.Instance.OnNewConnectionStarted -= PortalConnector_OnNewConnectionStarted;
         PortalConnector.Instance.OnNewConnectionStarting -= PortalConnector_OnNewConnectionStarting;
         PortalConnector.Instance.OnNewConnectionEnded -= PortalConnector_OnNewConnectionEnded;
+        PortalConnector.Instance.OnConnectionSevered -= PortalConnector_OnConnectionSevered;
+    }
+
+    private void PortalConnector_OnConnectionSevered(object sender, PortalConnector.PortalsConnectionArgs e)
+    {
+        if (portal == e.portal2)
+        {
+            SetLineRendererEnabled(false);
+        }
     }
 
     private void PortalConnector_OnNewConnectionEnded(object sender, PortalConnector.PortalsConnectionArgs e)
