@@ -106,6 +106,12 @@ namespace Game.Player
                 transform.parent = collision.transform;
             }
 
+            if (collision.GetComponent<PickupItem>())
+            {
+                PickupItemManager.Instance.AddItem();
+                Destroy(collision.gameObject);
+            }
+
             HandleCameraTarget(collision);
         }
 
