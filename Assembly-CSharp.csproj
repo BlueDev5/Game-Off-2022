@@ -58,6 +58,8 @@
     <Compile Include="Assets\PickupItemManager.cs" />
     <Compile Include="Assets\Scripts\Player\MovingLevel.cs" />
     <Compile Include="Assets\Scripts\LineConnectingPortals.cs" />
+    <Compile Include="Assets\Scripts\GameplayModeManager.cs" />
+    <Compile Include="Assets\PortalConnector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
