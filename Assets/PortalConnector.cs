@@ -11,6 +11,8 @@ public class PortalConnector : MonoBehaviour
         public Portal portal2;
     }
     public event EventHandler<PortalsConnectionArgs> OnNewConnectionStarted;
+    public event EventHandler<PortalsConnectionArgs> OnNewConnectionStarting;
+    public event EventHandler<PortalsConnectionArgs> OnNewConnectionEnded;
     Portal connectingPortal;
     public static PortalConnector Instance { get; private set; }
     private void Awake()
@@ -63,6 +65,14 @@ public class PortalConnector : MonoBehaviour
 
             connectingPortal = null;
         }
+
+        if (connectingPortal)
+        {
+            OnNewConnectionStarting?.Invoke(this, new PortalsConnectionArgs()
+            {
+                portal1 = connectingPortal
+            });
+        }
     }
 
     void ConnectPortals(Portal portal1, Portal portal2)
@@ -76,6 +86,11 @@ public class PortalConnector : MonoBehaviour
 
         if (portal2 == null)
         {
+            OnNewConnectionEnded?.Invoke(this, new PortalsConnectionArgs()
+            {
+                portal1 = portal1
+            });
+
             return;
         }
 
