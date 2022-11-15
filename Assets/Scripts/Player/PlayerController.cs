@@ -40,6 +40,11 @@ namespace Game.Player
 
         void FixedUpdate()
         {
+            if (GameplayModeManager.Instance.m_GameplayMode != GameplayMode.Walking)
+            {
+                return;
+            }
+
             GatherInput();
 
             _rigidbody.velocity = new Vector2(_horizontalMovement * _speed, _rigidbody.velocity.y);
@@ -56,6 +61,11 @@ namespace Game.Player
 
         void Update()
         {
+            if (GameplayModeManager.Instance.m_GameplayMode != GameplayMode.Walking)
+            {
+                return;
+            }
+
             if (_isGrounded)
             {
                 _jumpsLeft = _extraJumps;
@@ -101,25 +111,12 @@ namespace Game.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.GetComponent<MovingLevel>())
-            {
-                transform.parent = collision.transform;
-            }
-
             HandleCameraTarget(collision);
         }
 
         private void OnTriggerStay2D(Collider2D collision)
         {
             HandleCameraTarget(collision);
-        }
-
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.GetComponent<MovingLevel>())
-            {
-                transform.parent = null;
-            }
         }
 
         void HandleCameraTarget(Collider2D collision)

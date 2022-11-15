@@ -15,14 +15,32 @@ public class LineConnectingPortals : MonoBehaviour
         lineRenderer.endColor = Color.blue;
     }
 
-    private void Update()
+    private void Start()
     {
-        lineRenderer.enabled = portal.ConnectingPortal != null;
+        PortalConnector.Instance.OnNewConnectionStarted += PortalConnector_OnNewConnectionStarted;
+    }
 
-        if (!lineRenderer.enabled)
+    private void OnDestroy()
+    {
+        PortalConnector.Instance.OnNewConnectionStarted -= PortalConnector_OnNewConnectionStarted;
+    }
+
+    private void PortalConnector_OnNewConnectionStarted(object sender, PortalConnector.PortalsConnectionArgs e)
+    {
+        if (portal == e.portal1)
+        {
+            ConnectPortals();
+        }
+    }
+
+    void ConnectPortals()
+    {
+        if (portal.ConnectingPortal == null)
         {
             return;
         }
+
+        SetLineRendererEnabled(true);
 
         Transform[] portals = new Transform[2];
         portals[0] = transform;
@@ -30,5 +48,10 @@ public class LineConnectingPortals : MonoBehaviour
 
         lineRenderer.SetPosition(0, portals[0].position);
         lineRenderer.SetPosition(1, portals[1].position);
+    }
+
+    public void SetLineRendererEnabled(bool _enabled)
+    {
+        lineRenderer.enabled = _enabled;
     }
 }

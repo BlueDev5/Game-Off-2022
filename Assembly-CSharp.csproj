@@ -56,15 +56,15 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\CameraCollider.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerOneWayPlatformController.cs" />
     <Compile Include="Assets\Scripts\Portal.cs" />
     <Compile Include="Assets\Scripts\OrbitCamera.cs" />
-    <Compile Include="Assets\Scripts\Player\MovingLevel.cs" />
     <Compile Include="Assets\Scripts\LineConnectingPortals.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\CameraCollider.cs" />
-    <Compile Include="Assets\MovingLevelController.cs" />
+    <Compile Include="Assets\Scripts\GameplayModeManager.cs" />
+    <Compile Include="Assets\PortalConnector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    bool draggingLevel;
-    public bool DraggingLevel { get { return draggingLevel; }}
     Transform cameraTarget;
     public class CameraTargetArgs
     {
@@ -26,9 +24,19 @@ public class CameraController : MonoBehaviour
 
     public void CheckCameraTarget(CameraCollider cameraCollider)
     {
-        if (draggingLevel != cameraCollider.CameraOnLevel)
+        if (cameraCollider.CameraOnLevel)
         {
-            SetCameraTarget(cameraCollider.CameraTarget);
+            if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Walking)
+            {
+                SetCameraTarget(cameraCollider.CameraTarget);
+            }
+        }
+        else
+        {
+            if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Editing)
+            {
+                SetCameraTarget(cameraCollider.CameraTarget);
+            }
         }
     }
 
@@ -42,10 +50,5 @@ public class CameraController : MonoBehaviour
             });
         }
         this.cameraTarget = cameraTarget;
-    }
-
-    public void SetCameraMode(bool draggingLevel)
-    {
-        this.draggingLevel = draggingLevel;
     }
 }
