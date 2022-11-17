@@ -9,9 +9,13 @@ namespace Game.Portals
     public class Portal : MonoBehaviour
     {
         bool portalUsed;
-        [SerializeField] Portal connectingPortal;
-        public Portal ConnectingPortal { get { return connectingPortal; } }
-        [SerializeField] Image _portalImage;
+        public Portal ConnectingPortal;
+        [SerializeField] SpriteRenderer _portalImage;
+
+        public Color PortalColor
+        {
+            get => _portalImage.color;
+        }
 
         public void SetPortalColor(Color portalColor)
         {
@@ -20,8 +24,8 @@ namespace Game.Portals
 
         void UserUsePortal(Transform portalUser)
         {
-            portalUser.position = new Vector3(connectingPortal.transform.position.x, connectingPortal.transform.position.y, portalUser.transform.position.z);
-            connectingPortal.UsePortal();
+            portalUser.position = new Vector3(ConnectingPortal.transform.position.x, ConnectingPortal.transform.position.y, portalUser.transform.position.z);
+            ConnectingPortal.UsePortal();
         }
 
         public void UsePortal()

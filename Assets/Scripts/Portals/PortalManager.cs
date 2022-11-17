@@ -30,8 +30,16 @@ namespace Game.Portals
         #region Variables
         private List<PortalConnection> _portalConnections = new List<PortalConnection>();
         private List<Portal> _allPortals = new List<Portal>();
-        [SerializeField] private KeyCombo _togglePortalMode;
-        private bool _isPortalMode;
+        [SerializeField] private Color _unconnectedPortalColor;
+        [SerializeField] private Color _selectedColor;
+
+        [SerializeField] private List<Color> _connectionColors;
+
+        [SerializeField] private GameObject _deleteConnectionButton;
+
+
+        private Portal _selectedPortal;
+        private Color _selectedPortalColor;
         #endregion
 
 
@@ -42,10 +50,24 @@ namespace Game.Portals
         #region Unity Calls
         void Update()
         {
+            if (GameplayModeManager.Instance.m_GameplayMode != GameplayMode.Editing) return;
 
-            if (_togglePortalMode.IsComboDown())
+            if (Input.GetMouseButtonDown(0))
             {
+                Portal portalUnderMouse = null;
+                var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                foreach (var portal in _allPortals)
+                {
+                    var portalBounds = portal.GetComponent<Collider2D>().bounds;
+                    if (portalBounds.IntersectRay(mouseRay))
+                    {
+                        portalUnderMouse = portal;
+                    }
+                }
 
+                if (portalUnderMouse == null) return;
+
+                PortalSelected(portalUnderMouse);
             }
         }
         #endregion
@@ -60,27 +82,6 @@ namespace Game.Portals
             _allPortals.Add(portal);
         }
 
-        /// <summary>
-        /// Add a portal connection to the list of connections. 
-        /// </summary>
-        /// <param name="portalFrom"></param>
-        /// <param name="portalTo"></param>
-        public void AddPortalConnection(Portal portalFrom, Portal portalTo)
-        {
-            // Another connection already exists
-            if (AnotherConnectionExists(portalFrom) || AnotherConnectionExists(portalTo))
-            {
-                return;
-            }
-
-            _portalConnections.Add(new PortalConnection() { portal1 = portalFrom, portal2 = portalTo });
-
-            var portalColor = getRandomLightColor();
-            portalFrom.SetPortalColor(portalColor);
-            portalTo.SetPortalColor(portalColor);
-        }
-
-        /// <summary>
         /// Function for checking if another connection already exists for the specified portal.
         /// </summary>
         /// <param name="portal"> The portal to check </param>
@@ -89,40 +90,122 @@ namespace Game.Portals
         {
             foreach (var connection in _portalConnections)
             {
-                if (connection.portal1 == portal) return true;
+                if (connection.portal1 == portal || connection.portal2 == portal) return true;
             }
 
             return false;
         }
 
-        private Color getRandomLightColor()
+        private void PortalSelected(Portal portal)
         {
-            return ColorFromHSV(Random.Range(0, 360), Random.Range(80, 100), Random.Range(0, 30));
+            if (_selectedPortal == null)
+            {
+                _selectedPortal = portal;
+                _selectedPortalColor = _selectedPortal.PortalColor;
+                _selectedPortal.SetPortalColor(_selectedColor);
+
+                if (_selectedPortal.ConnectingPortal != null)
+                {
+                    _deleteConnectionButton.SetActive(true);
+                }
+
+                return;
+            }
+
+            if (_selectedPortal.gameObject.GetInstanceID() == portal.gameObject.GetInstanceID())
+            {
+                _selectedPortal.SetPortalColor(_selectedPortalColor);
+                _selectedPortal = null;
+                _selectedPortalColor = _unconnectedPortalColor;
+
+                return;
+            }
+
+            if (_selectedPortal.ConnectingPortal != null || portal.ConnectingPortal != null)
+            {
+                _selectedPortal.SetPortalColor(_selectedPortalColor);
+                _selectedPortal = null;
+                _selectedPortalColor = _unconnectedPortalColor;
+
+                return;
+            }
+
+            AddPortalConnection(_selectedPortal, portal);
+            _selectedPortal = null;
+            _selectedPortalColor = _unconnectedPortalColor;
         }
 
-        public static Color ColorFromHSV(double hue, double saturation, double value)
+        /// <summary>
+        /// Add a portal connection to the list of connections. 
+        /// </summary>
+        /// <param name="portalFrom"></param>
+        /// <param name="portalTo"></param>
+        /// <summary>
+        private void AddPortalConnection(Portal portalFrom, Portal portalTo)
         {
-            int hi = Convert.ToInt32(Math.Floor(hue / 60)) % 6;
-            double f = hue / 60 - Math.Floor(hue / 60);
+            if (AnotherConnectionExists(portalFrom) || AnotherConnectionExists(portalTo)) return;
 
-            value = value * 255;
-            int v = Convert.ToInt32(value);
-            int p = Convert.ToInt32(value * (1 - saturation));
-            int q = Convert.ToInt32(value * (1 - f * saturation));
-            int t = Convert.ToInt32(value * (1 - (1 - f) * saturation));
+            var portalColor = getPortalColor();
 
-            if (hi == 0)
-                return new Color(255, v, t, p);
-            else if (hi == 1)
-                return new Color(255, q, v, p);
-            else if (hi == 2)
-                return new Color(255, p, v, t);
-            else if (hi == 3)
-                return new Color(255, p, q, v);
-            else if (hi == 4)
-                return new Color(255, t, p, v);
-            else
-                return new Color(255, v, p, q);
+            portalFrom.SetPortalColor(portalColor);
+            portalTo.SetPortalColor(portalColor);
+
+            portalFrom.ConnectingPortal = portalTo;
+            portalTo.ConnectingPortal = portalFrom;
+
+            var connection = new PortalConnection()
+            {
+                portal1 = portalFrom,
+                portal2 = portalTo,
+                portalColor = portalColor,
+            };
+            _portalConnections.Add(connection);
+
+            _selectedPortal = null;
+            _selectedPortalColor = _unconnectedPortalColor;
+        }
+
+        private Color getPortalColor()
+        {
+            var possibleColors = new List<Color>(_connectionColors);
+
+            foreach (var connection in _portalConnections)
+            {
+                if (possibleColors.Contains(connection.portalColor))
+                {
+                    possibleColors.Remove(connection.portalColor);
+                }
+            }
+
+            return possibleColors[Random.Range(0, possibleColors.Count)];
+        }
+
+        public void RemoveSelectedPortalConnection()
+        {
+            if (_selectedPortal == null) return;
+            if (_selectedPortal.ConnectingPortal == null) return;
+
+            _selectedPortal.ConnectingPortal.SetPortalColor(_unconnectedPortalColor);
+            _selectedPortal.SetPortalColor(_unconnectedPortalColor);
+
+            _selectedPortal.ConnectingPortal.ConnectingPortal = null;
+            _selectedPortal.ConnectingPortal = null;
+
+            for (int i = 0; i < _portalConnections.Count; i++)
+            {
+                PortalConnection connection = _portalConnections[i];
+
+                if (connection.portal1 != _selectedPortal && connection.portal2 != _selectedPortal)
+                {
+                    continue;
+                }
+
+                _portalConnections.RemoveAt(i);
+            }
+
+            _selectedPortal.ConnectingPortal = null;
+            _selectedPortal = null;
+            _selectedPortalColor = _unconnectedPortalColor;
         }
         #endregion
     }

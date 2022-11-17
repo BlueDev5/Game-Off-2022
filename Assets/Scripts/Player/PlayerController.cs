@@ -111,11 +111,6 @@ namespace Game.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.GetComponent<MovingLevel>())
-            {
-                transform.parent = collision.transform;
-            }
-
             if (collision.GetComponent<PickupItem>())
             {
                 PickupItemManager.Instance.AddItem();
