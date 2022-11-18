@@ -6,6 +6,7 @@ using UnityEngine;
 public class PickupItemManager : MonoBehaviour
 {
     int numberOfItems;
+
     public static PickupItemManager Instance { get; private set; }
     private void Awake()
     {

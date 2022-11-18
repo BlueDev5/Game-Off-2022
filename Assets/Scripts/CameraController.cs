@@ -12,6 +12,10 @@ public class CameraController : MonoBehaviour
     }
     public event EventHandler<CameraTargetArgs> OnCameraTargetChanged;
     public static CameraController Instance { get; private set; }
+
+    [SerializeField] private Transform _walkingTarget;
+    [SerializeField] private Transform _editingTarget;
+
     private void Awake()
     {
         if (Instance != null)
@@ -22,21 +26,15 @@ public class CameraController : MonoBehaviour
         Instance = this;
     }
 
-    public void CheckCameraTarget(CameraCollider cameraCollider)
+    public void CheckCameraTarget()
     {
-        if (cameraCollider.CameraOnLevel)
+        if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Walking)
         {
-            if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Walking)
-            {
-                SetCameraTarget(cameraCollider.CameraTarget);
-            }
+            SetCameraTarget(_walkingTarget);
         }
-        else
+        else if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Editing)
         {
-            if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Editing)
-            {
-                SetCameraTarget(cameraCollider.CameraTarget);
-            }
+            SetCameraTarget(_walkingTarget);
         }
     }
 

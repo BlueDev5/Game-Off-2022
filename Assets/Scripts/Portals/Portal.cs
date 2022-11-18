@@ -24,6 +24,8 @@ namespace Game.Portals
 
         void UserUsePortal(Transform portalUser)
         {
+            if (ConnectingPortal == null) return;
+
             portalUser.position = new Vector3(ConnectingPortal.transform.position.x, ConnectingPortal.transform.position.y, portalUser.transform.position.z);
             ConnectingPortal.UsePortal();
         }

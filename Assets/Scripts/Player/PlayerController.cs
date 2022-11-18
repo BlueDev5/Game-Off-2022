@@ -23,6 +23,8 @@ namespace Game.Player
 
         private float _horizontalMovement = 0;
         private bool _isFacingRight = true;
+
+        public bool hasKey = false;
         #endregion
 
 
@@ -111,12 +113,6 @@ namespace Game.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.GetComponent<PickupItem>())
-            {
-                PickupItemManager.Instance.AddItem();
-                Destroy(collision.gameObject);
-            }
-
             HandleCameraTarget(collision);
         }
 
@@ -127,10 +123,7 @@ namespace Game.Player
 
         void HandleCameraTarget(Collider2D collision)
         {
-            if (collision.TryGetComponent(out CameraCollider cameraCollider))
-            {
-                CameraController.Instance.CheckCameraTarget(cameraCollider);
-            }
+            CameraController.Instance.CheckCameraTarget();
         }
 
         #endregion
