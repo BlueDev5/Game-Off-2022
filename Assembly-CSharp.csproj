@@ -43,11 +43,12 @@
      <Compile Include="Assets\Scripts\Portals\PortalConnection.cs" />
      <Compile Include="Assets\PickupItem.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerOneWayPlatformController.cs" />
+     <Compile Include="Assets\Scripts\Portals\LevelEndDoor.cs" />
      <Compile Include="Assets\Scripts\Portals\Portal.cs" />
      <Compile Include="Assets\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\Scripts\GameplayModeManager.cs" />
      <Compile Include="Assets\PickupItemManager.cs" />
-     <Compile Include="Assets\Scripts\Portals\LevelEndDoor.cs" />
+     <Compile Include="Assets\Scripts\SpriteSheetAnimation.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
