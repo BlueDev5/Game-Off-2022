@@ -6,6 +6,23 @@ namespace Game.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        #region Events
+        public event EventHandler OnPlayerJump;
+        public class UpdateVelocityArgs : EventArgs
+        {
+            public float velocityX;
+        }
+
+        public event EventHandler<UpdateVelocityArgs> OnPlayerUpdateVelocity;
+
+        public class UpdateGroundedArgs : EventArgs
+        {
+            public bool onGround;
+        }
+
+        public event EventHandler<UpdateGroundedArgs> OnPlayerUpdateGrounded;
+        #endregion
+
         #region Variables
         [SerializeField] private float _speed = 5f;
         [SerializeField] private float _jumpHeight = 5f;
@@ -42,6 +59,16 @@ namespace Game.Player
 
         void FixedUpdate()
         {
+            OnPlayerUpdateGrounded?.Invoke(this, new UpdateGroundedArgs()
+            {
+                onGround = _isGrounded
+            });
+
+            OnPlayerUpdateVelocity?.Invoke(this, new UpdateVelocityArgs()
+            {
+                velocityX = _rigidbody.velocity.x
+            });
+
             if (GameplayModeManager.Instance.m_GameplayMode != GameplayMode.Walking)
             {
                 return;
@@ -78,11 +105,13 @@ namespace Game.Player
                 if (_jumpsLeft > 0)
                 {
                     _rigidbody.velocity = Vector2.up * _jumpHeight;
+                    Jump();
                     _jumpsLeft--;
                 }
                 else if (_jumpsLeft == 0 && _isGrounded)
                 {
                     _rigidbody.velocity = Vector2.up * _jumpHeight;
+                    Jump();
                 }
             }
         }
@@ -90,6 +119,11 @@ namespace Game.Player
 
 
         #region Functions
+        void Jump()
+        {
+            OnPlayerJump?.Invoke(this, EventArgs.Empty);
+        }
+
         private void GatherInput()
         {
             float horizontalMovement = Input.GetAxisRaw("Horizontal");
