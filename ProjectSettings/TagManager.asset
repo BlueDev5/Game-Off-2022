@@ -14,9 +14,9 @@ TagManager:
   - Background
   - Ground
   - Player
-  - 
-  - 
-  - 
+  - Platform
+  - Enemy
+  - Portal
   - 
   - 
   - 
