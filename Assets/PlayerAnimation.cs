@@ -34,7 +34,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void PlayerController_OnPlayerUpdateVelocity(object sender, PlayerController.UpdateVelocityArgs e)
     {
-        animator.SetBool("movingH", e.velocityX != 0);
+        animator.SetBool("movingH", e.velocityX >= 0.01f || e.velocityX <= -0.01f);
     }
 
     private void PlayerController_OnPlayerUpdateGrounded(object sender, PlayerController.UpdateGroundedArgs e)

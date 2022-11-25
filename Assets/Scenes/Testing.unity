@@ -669,8 +669,6 @@ GameObject:
   - component: {fileID: 233008477}
   - component: {fileID: 233008478}
   - component: {fileID: 233008479}
-  - component: {fileID: 233008481}
-  - component: {fileID: 233008480}
   - component: {fileID: 233008483}
   - component: {fileID: 233008482}
   m_Layer: 8
@@ -815,7 +813,7 @@ MonoBehaviour:
   _groundTransform: {fileID: 1441203664}
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   hasKey: 0
 --- !u!114 &233008479
 MonoBehaviour:
@@ -829,54 +827,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630194633dfc4cd489657ee0f4bfc777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &233008480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233008473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236f84e51ffe1024e95a99fbbf831b76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
-  _frameRate: 4
-  _startAwake: 0
-  _sprites:
-  - {fileID: -602324906, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: 2098864040, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: 1321875466, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: 1225818590, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: -456967756, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: -1012991491, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: 611761437, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: -1492786919, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
---- !u!114 &233008481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233008473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236f84e51ffe1024e95a99fbbf831b76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
-  _frameRate: 6
-  _startAwake: 0
-  _sprites:
-  - {fileID: -1853486368, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: 959432724, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: -1307784581, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: 1505105291, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: -1754045194, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: -198405119, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: -381868298, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
-  - {fileID: 492464299, guid: 716f2d113e331a0439150f1d5c16a22d, type: 3}
 --- !u!95 &233008482
 Animator:
   serializedVersion: 4
@@ -3010,6 +2960,8 @@ GameObject:
   - component: {fileID: 1025023491}
   - component: {fileID: 1025023498}
   - component: {fileID: 1025023499}
+  - component: {fileID: 1025023501}
+  - component: {fileID: 1025023500}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
@@ -3157,11 +3109,50 @@ MonoBehaviour:
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  _shootingRange: 3
+  _shootingRange: 4
   _timeBetweenAttacks: 0.75
   _projectile: {fileID: 3089334861827929674, guid: 87b24d02a713e264c8489ee9c7dee544,
     type: 3}
   _projectileShootPoint: {fileID: 1205175535}
+  _idleSprite: {fileID: -1809601398, guid: bcfe682df436f30448b9e865d351de12, type: 3}
+  _walkAnimation: {fileID: 1025023501}
+  _shootAnimation: {fileID: 1025023500}
+--- !u!114 &1025023500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025023490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236f84e51ffe1024e95a99fbbf831b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 0}
+  _frameRate: 4
+  _startAwake: 0
+  _sprites:
+  - {fileID: -478404770, guid: bcfe682df436f30448b9e865d351de12, type: 3}
+  - {fileID: 262297344, guid: bcfe682df436f30448b9e865d351de12, type: 3}
+--- !u!114 &1025023501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025023490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236f84e51ffe1024e95a99fbbf831b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 0}
+  _frameRate: 2
+  _startAwake: 0
+  _sprites:
+  - {fileID: 2132494042, guid: bcfe682df436f30448b9e865d351de12, type: 3}
+  - {fileID: 2145333850, guid: bcfe682df436f30448b9e865d351de12, type: 3}
 --- !u!1 &1049088380
 GameObject:
   m_ObjectHideFlags: 0

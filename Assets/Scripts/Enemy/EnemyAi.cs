@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using Utils;
 
 namespace Game.Enemy
 {
@@ -19,6 +19,11 @@ namespace Game.Enemy
         [SerializeField] private float _timeBetweenAttacks;
         [SerializeField] private Projectile _projectile;
         [SerializeField] private Transform _projectileShootPoint;
+
+        [Header("Animations")]
+        [SerializeField] private Sprite _idleSprite;
+        [SerializeField] private SpriteSheetAnimation _walkAnimation;
+        [SerializeField] private SpriteSheetAnimation _shootAnimation;
 
         private bool _movingRight = false;
         private bool _isShooting = false;
@@ -64,7 +69,16 @@ namespace Game.Enemy
 
             if (!PlayerAhead())
             {
+                if (!_walkAnimation.IsPlaying) _walkAnimation.StartPlaying();
                 transform.Translate(Vector2.left * _speed * Time.deltaTime);
+            }
+            else if (_walkAnimation.IsPlaying)
+            {
+                // Stop Animation.
+                _walkAnimation.StopPlaying();
+
+                // Reset the animation to first frame.
+                GetComponent<SpriteRenderer>().sprite = _idleSprite;
             }
 
             _timeSinceLastAttack += Time.deltaTime;
@@ -123,9 +137,11 @@ namespace Game.Enemy
         {
             _timeSinceLastAttack = 0;
 
-            // * Add Logic to shoot the projectile.
             var projectile = Instantiate(_projectile, _projectileShootPoint.position, Quaternion.identity);
             projectile.Direction = new Vector2(_movingRight ? 1 : -1, 0);
+
+            // Play Shoot Animation.
+            _shootAnimation.PlayOneShot();
         }
         #endregion
     }

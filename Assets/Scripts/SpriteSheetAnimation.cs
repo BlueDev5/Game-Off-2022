@@ -49,6 +49,13 @@ namespace Utils
 
 
         #region Functions
+        public void SetFrame(int frame)
+        {
+            _currentFrame %= frame;
+
+            _spriteRenderer.sprite = _sprites[_currentFrame];
+        }
+
         public void StartPlaying(int from = 0)
         {
             _isPlaying = true;
