@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
         }
         else if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Editing)
         {
-            SetCameraTarget(_walkingTarget);
+            SetCameraTarget(_editingTarget);
         }
     }
 

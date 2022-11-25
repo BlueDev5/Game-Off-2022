@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\GameplayModeManager.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyAi.cs" />
      <Compile Include="Assets\PickupItemManager.cs" />
+     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

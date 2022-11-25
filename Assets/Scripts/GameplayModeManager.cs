@@ -1,15 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameplayMode
 {
+    HomeMenu,
     Walking,
-    Editing
+    Editing,
+    Dead,
 }
 public class GameplayModeManager : MonoBehaviour
 {
     GameplayMode gameplayMode;
+    public Event<GameplayMode> OnGamePlayModeChanged;
     public GameplayMode m_GameplayMode { get { return gameplayMode; } }
     public static GameplayModeManager Instance { get; private set; }
     private void Awake()
@@ -20,20 +24,44 @@ public class GameplayModeManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        OnGamePlayModeChanged += UpdateSettings;
+    }
+
+    private void UpdateSettings(GameplayMode lastMode)
+    {
+        if (gameplayMode == GameplayMode.Walking)
+        {
+            Time.timeScale = 1;
+        }
+        else if (gameplayMode == GameplayMode.Editing)
+        {
+            Time.timeScale = 0.4f;
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            print("Tab: " + gameplayMode.ToString());
             if (gameplayMode == GameplayMode.Walking)
             {
-                gameplayMode = GameplayMode.Editing;
+                SetState(GameplayMode.Editing);
             }
             else if (gameplayMode == GameplayMode.Editing)
             {
-                gameplayMode = GameplayMode.Walking;
+                SetState(GameplayMode.Walking);
             }
         }
+    }
+
+    public void SetState(GameplayMode mode)
+    {
+        if (gameplayMode == mode) return;
+
+        var lastMode = gameplayMode;
+        gameplayMode = mode;
+        OnGamePlayModeChanged?.Invoke(lastMode);
     }
 }
