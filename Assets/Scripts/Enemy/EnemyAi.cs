@@ -102,6 +102,14 @@ namespace Game.Enemy
         {
             _player = GameObject.FindObjectOfType<Player.PlayerController>();
         }
+
+        void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.TryGetComponent<Player.PlayerController>(out Player.PlayerController controller))
+            {
+                controller.Death();
+            }
+        }
         #endregion
 
 

@@ -814,6 +814,8 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 640
+  _deathScreenCollection: {fileID: 11400000, guid: 94bc41655cb56034ebeeaca096f92e81,
+    type: 2}
   hasKey: 0
 --- !u!114 &233008479
 MonoBehaviour:

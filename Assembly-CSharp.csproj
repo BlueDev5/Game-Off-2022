@@ -45,6 +45,7 @@
      <Compile Include="Assets\Scripts\SpriteSheetAnimation.cs" />
      <Compile Include="Assets\PlayerAnimation.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerOneWayPlatformController.cs" />
+     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Portals\LevelEndDoor.cs" />
      <Compile Include="Assets\Scripts\Portals\Portal.cs" />
      <Compile Include="Assets\Scripts\Enemy\Projectile.cs" />
@@ -52,7 +53,8 @@
      <Compile Include="Assets\Scripts\GameplayModeManager.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyAi.cs" />
      <Compile Include="Assets\PickupItemManager.cs" />
-     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\UI\EndScreen.cs" />
+     <Compile Include="Assets\Scripts\LevelManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
