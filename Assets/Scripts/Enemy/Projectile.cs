@@ -25,6 +25,11 @@ namespace Game.Enemy
 
         void OnTriggerEnter2D(Collider2D other)
         {
+            if (other.gameObject.TryGetComponent<Player.PlayerController>(out Player.PlayerController controller))
+            {
+                controller.Death();
+            }
+
             if ((_whatIsObstacle.value & (1 << other.gameObject.layer)) > 0)
             {
                 Destroy(gameObject);

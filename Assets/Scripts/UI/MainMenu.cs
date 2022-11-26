@@ -7,7 +7,6 @@ namespace Game.UI
     public class MainMenu : MonoBehaviour
     {
         #region Variables
-        [SerializeField] private SceneCollection _gameStartLevelCollection;
         #endregion
 
 
@@ -26,7 +25,7 @@ namespace Game.UI
         public void StartLevel()
         {
             // Load Level.
-            SceneCollectionHandler.LoadSceneCollection(_gameStartLevelCollection);
+            Levels.LevelManager.Instance.LoadLevel(0);
 
             // Set State to the Gameplay Mode Manager.
             GameplayModeManager.Instance.SetState(GameplayMode.Walking);

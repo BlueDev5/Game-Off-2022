@@ -1,4 +1,5 @@
 using System;
+using GameSystems.Scenes.SceneManagement;
 using UnityEngine;
 
 
@@ -32,6 +33,8 @@ namespace Game.Player
 
         [SerializeField] private Transform _groundTransform;
         [SerializeField] private LayerMask _whatIsGround;
+
+        [SerializeField] private SceneCollection _deathScreenCollection;
 
         private bool _isGrounded;
         private Rigidbody2D _rigidbody;
@@ -119,6 +122,11 @@ namespace Game.Player
 
 
         #region Functions
+        public void Death()
+        {
+            SceneCollectionHandler.LoadSceneCollection(_deathScreenCollection);
+        }
+
         void Jump()
         {
             OnPlayerJump?.Invoke(this, EventArgs.Empty);

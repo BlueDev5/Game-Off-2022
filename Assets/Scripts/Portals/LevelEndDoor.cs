@@ -32,12 +32,20 @@ namespace Game.Portals
             {
                 if (!controller.hasKey) return;
 
+                _animationSpriteSheets[0].OnAnimationStopped += OnAnimationStopped;
+
                 foreach (var animation in _animationSpriteSheets)
                 {
                     animation.PlayOneShot();
                 }
                 _hasBeenUsed = true;
             }
+        }
+
+        private void OnAnimationStopped()
+        {
+            _animationSpriteSheets[0].OnAnimationStopped -= OnAnimationStopped;
+            Levels.LevelManager.Instance.LoadNextLevel();
         }
         #endregion
 
