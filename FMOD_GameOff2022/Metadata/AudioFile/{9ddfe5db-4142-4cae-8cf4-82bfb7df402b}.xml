@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9ddfe5db-4142-4cae-8cf4-82bfb7df402b}">
+		<property name="assetPath">
+			<value>knight_jump_chainmail1_11.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.2832879818594105</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5d7d221f-4692-4e74-b8a9-02eb12790b34}</destination>
+		</relationship>
+	</object>
+</objects>
