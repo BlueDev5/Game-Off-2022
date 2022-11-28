@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{690949f7-edd2-4e48-9635-b0d10f47be5e}">
+		<property name="assetPath">
+			<value>enemy_fire_04.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.3895238095238096</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5d7d221f-4692-4e74-b8a9-02eb12790b34}</destination>
+		</relationship>
+	</object>
+</objects>
