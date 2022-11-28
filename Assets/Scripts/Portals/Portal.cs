@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 namespace Game.Portals
 {
@@ -28,6 +29,10 @@ namespace Game.Portals
 
             portalUser.position = new Vector3(ConnectingPortal.transform.position.x, ConnectingPortal.transform.position.y, portalUser.transform.position.z);
             ConnectingPortal.UsePortal();
+
+            //plays the portal sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX_use_portal", GetComponent<Transform>().position);
+
         }
 
         public void UsePortal()

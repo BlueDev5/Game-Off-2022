@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c3aa99d1-d81f-4e63-9118-3154fd3d1d8f}">
+		<property name="assetPath">
+			<value>enemy_laser_gun_05.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.4016553287981859</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5d7d221f-4692-4e74-b8a9-02eb12790b34}</destination>
+		</relationship>
+	</object>
+</objects>
