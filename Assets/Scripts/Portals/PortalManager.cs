@@ -98,6 +98,9 @@ namespace Game.Portals
 
         private void PortalSelected(Portal portal)
         {
+            //play portal select sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX_select_portal");
+
             if (_selectedPortal == null)
             {
                 _selectedPortal = portal;
@@ -163,6 +166,9 @@ namespace Game.Portals
 
             _selectedPortal = null;
             _selectedPortalColor = _unconnectedPortalColor;
+
+            //play portal connection sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX_connect_portal");
         }
 
         private Color getPortalColor()
@@ -206,6 +212,9 @@ namespace Game.Portals
             _selectedPortal.ConnectingPortal = null;
             _selectedPortal = null;
             _selectedPortalColor = _unconnectedPortalColor;
+
+            //play unselect portal sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX_delete_connection");
         }
         #endregion
     }

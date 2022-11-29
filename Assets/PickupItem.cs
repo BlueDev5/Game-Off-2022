@@ -12,6 +12,9 @@ public class PickupItem : MonoBehaviour
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
             player.hasKey = true;
+
+            //play pickup key sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX_item_pickup", GetComponent<Transform>().position);
             Destroy(gameObject);
         }
     }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bbe2b31a-0ada-4615-b1bc-9f7373a5d6b1}">
+		<property name="assetPath">
+			<value>door_hiss.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.3199092970521544</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5d7d221f-4692-4e74-b8a9-02eb12790b34}</destination>
+		</relationship>
+	</object>
+</objects>

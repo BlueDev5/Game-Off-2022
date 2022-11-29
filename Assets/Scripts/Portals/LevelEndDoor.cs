@@ -37,6 +37,9 @@ namespace Game.Portals
                 foreach (var animation in _animationSpriteSheets)
                 {
                     animation.PlayOneShot();
+
+                    //play door sound
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX_gate_open");
                 }
                 _hasBeenUsed = true;
             }
