@@ -1,12 +1,15 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 
 namespace Utils
 {
     public class SpriteSheetAnimation : MonoBehaviour
     {
         #region Variables
+        [Header("Optional Fields, Use if the Sprite Renderer or Image is not on the gameObject this class is attached to.")]
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Image _image;
+        [Space]
         [SerializeField] private int _frameRate;
         [SerializeField] private bool _startAwake;
         [SerializeField] private Sprite[] _sprites;
@@ -30,7 +33,8 @@ namespace Utils
         #region Unity Calls
         void Awake()
         {
-            if (_spriteRenderer == null) _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            if (_spriteRenderer == null && gameObject.TryGetComponent<SpriteRenderer>(out var renderer)) _spriteRenderer = renderer;
+            if (_image == null && gameObject.TryGetComponent<Image>(out var image)) _image = image;
             if (_startAwake) _isPlaying = true;
         }
 
@@ -42,7 +46,7 @@ namespace Utils
             UpdateCurrentFrame();
 
             // Update sprite
-            _spriteRenderer.sprite = _sprites[_currentFrame];
+            UpdateSprite();
         }
 
         #endregion
@@ -53,7 +57,7 @@ namespace Utils
         {
             _currentFrame %= frame;
 
-            _spriteRenderer.sprite = _sprites[_currentFrame];
+            UpdateSprite();
         }
 
         public void StartPlaying(int from = 0)
@@ -96,6 +100,18 @@ namespace Utils
             }
 
             _timeSinceLastFrame += Time.deltaTime;
+        }
+
+        private void UpdateSprite()
+        {
+            if (_spriteRenderer != null)
+            {
+                _spriteRenderer.sprite = _sprites[_currentFrame];
+            }
+            else if (_image != null)
+            {
+                _image.sprite = _sprites[_currentFrame];
+            }
         }
         #endregion
     }
