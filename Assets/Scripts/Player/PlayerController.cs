@@ -44,7 +44,7 @@ namespace Game.Player
         private float _horizontalMovement = 0;
         private bool _isFacingRight = true;
 
-        public bool hasKey = false;
+        public bool HasKey = false;
         #endregion
 
 

@@ -8,7 +8,8 @@ public class OrbitCamera : MonoBehaviour
     [SerializeField] private float dampTime;
     private Vector3 velocity = Vector3.zero;
     private float zPosition = -15f;
-    [SerializeField] private Collider2D _levelFocusCollider;
+    [SerializeField] private int _playerFocusZPos;
+    [SerializeField] private int _levelFocusZPos;
 
     private void Start()
     {
@@ -34,13 +35,13 @@ public class OrbitCamera : MonoBehaviour
 
         if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Editing)
         {
-            zPosition = -20;
-            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(0, 0, zPosition), ref velocity, dampTime);
+            zPosition = _levelFocusZPos;
+            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(0, 0, zPosition), ref velocity, dampTime * Time.timeScale);
         }
         else if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Walking)
         {
-            zPosition = -15;
-            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(target.position.x, target.position.y, zPosition), ref velocity, dampTime);
+            zPosition = _playerFocusZPos;
+            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(target.position.x, target.position.y, zPosition), ref velocity, dampTime * Time.timeScale);
         }
 
     }

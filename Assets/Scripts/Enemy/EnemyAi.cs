@@ -107,6 +107,8 @@ namespace Game.Enemy
         {
             if (other.gameObject.TryGetComponent<Player.PlayerController>(out Player.PlayerController controller))
             {
+                var direction = (other.transform.position - transform.position).normalized;
+                if (direction.x <= direction.y) return;
                 controller.Death();
             }
         }

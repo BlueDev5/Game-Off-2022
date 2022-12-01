@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     public event EventHandler<CameraTargetArgs> OnCameraTargetChanged;
     public static CameraController Instance { get; private set; }
 
-    [SerializeField] private Transform _walkingTarget;
+    public Transform WalkingTarget;
     [SerializeField] private Transform _editingTarget;
 
     private void Awake()
@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     {
         if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Walking)
         {
-            SetCameraTarget(_walkingTarget);
+            SetCameraTarget(WalkingTarget);
         }
         else if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Editing)
         {

@@ -36,7 +36,7 @@ public class GameplayModeManager : MonoBehaviour
         }
         else if (gameplayMode == GameplayMode.Editing)
         {
-            Time.timeScale = 0.4f;
+            Time.timeScale = 0.2f;
         }
     }
 
@@ -44,7 +44,6 @@ public class GameplayModeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            print("Tab: " + gameplayMode.ToString());
             if (gameplayMode == GameplayMode.Walking)
             {
                 SetState(GameplayMode.Editing);
