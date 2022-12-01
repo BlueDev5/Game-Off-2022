@@ -50,7 +50,15 @@ namespace Game.Portals
         #region Unity Calls
         void Update()
         {
-            if (GameplayModeManager.Instance.m_GameplayMode != GameplayMode.Editing) return;
+            if (GameplayModeManager.Instance.GamePlayMode != GamePlayMode.Editing)
+            {
+                if (_selectedPortal != null)
+                {
+                    _selectedPortal.SetPortalColor(_selectedPortalColor);
+                }
+                _deleteConnectionButton.SetActive(false);
+                return;
+            }
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -212,6 +220,8 @@ namespace Game.Portals
             _selectedPortal.ConnectingPortal = null;
             _selectedPortal = null;
             _selectedPortalColor = _unconnectedPortalColor;
+
+            _deleteConnectionButton.SetActive(false);
 
             //play unselect portal sound
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX_delete_connection");

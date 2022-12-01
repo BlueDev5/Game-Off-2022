@@ -30,17 +30,13 @@ namespace Game.Portals
 
             if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
             {
-                if (!controller.hasKey) return;
+                if (!controller.HasKey) return;
 
-                _animationSpriteSheets[0].OnAnimationStopped += OnAnimationStopped;
+                //play door sound
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX_gate_open");
 
-                foreach (var animation in _animationSpriteSheets)
-                {
-                    animation.PlayOneShot();
+                PlayDoorAnimation();
 
-                    //play door sound
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX_gate_open");
-                }
                 _hasBeenUsed = true;
             }
         }
@@ -49,6 +45,22 @@ namespace Game.Portals
         {
             _animationSpriteSheets[0].OnAnimationStopped -= OnAnimationStopped;
             Levels.LevelManager.Instance.LoadNextLevel();
+        }
+
+        private void PlayDoorAnimation()
+        {
+            if (_animationSpriteSheets.Length == 0)
+            {
+                Levels.LevelManager.Instance.LoadNextLevel();
+                return;
+            }
+
+            _animationSpriteSheets[0].OnAnimationStopped += OnAnimationStopped;
+
+            foreach (var animation in _animationSpriteSheets)
+            {
+                animation.PlayOneShot();
+            }
         }
         #endregion
 

@@ -67,7 +67,7 @@ namespace Game.Enemy
 
             FacePlayerIfShooting();
 
-            if (!PlayerAhead())
+            if (!PlayerAhead() && !_isShooting)
             {
                 if (!_walkAnimation.IsPlaying) _walkAnimation.StartPlaying();
                 transform.Translate(Vector2.left * _speed * Time.deltaTime);
@@ -107,6 +107,8 @@ namespace Game.Enemy
         {
             if (other.gameObject.TryGetComponent<Player.PlayerController>(out Player.PlayerController controller))
             {
+                var direction = (other.transform.position - transform.position).normalized;
+                if (direction.x <= direction.y) return;
                 controller.Death();
             }
         }
@@ -119,7 +121,7 @@ namespace Game.Enemy
             var xDistance = Mathf.Abs(_player.transform.position.x - transform.position.x);
             var yDistance = Mathf.Abs(_player.transform.position.y - transform.position.y);
 
-            return xDistance < _shootingRange && yDistance < 0.75f;
+            return (xDistance < _shootingRange && yDistance < 0.75f) || _shootingRange == 0;
         }
 
         private bool ObstacleAhead()

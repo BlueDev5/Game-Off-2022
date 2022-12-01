@@ -5,34 +5,42 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    #region Singleton
+    private static CameraController _instance;
+    public static CameraController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<CameraController>();
+                if (_instance == null)
+                {
+                    _instance = new GameObject("CameraController instance", typeof(CameraController)).GetComponent<CameraController>();
+                }
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
     Transform cameraTarget;
     public class CameraTargetArgs
     {
         public Transform cameraTarget;
     }
     public event EventHandler<CameraTargetArgs> OnCameraTargetChanged;
-    public static CameraController Instance { get; private set; }
 
-    [SerializeField] private Transform _walkingTarget;
+    public Transform WalkingTarget;
     [SerializeField] private Transform _editingTarget;
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
 
     public void CheckCameraTarget()
     {
-        if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Walking)
+        if (GameplayModeManager.Instance.GamePlayMode == GamePlayMode.Walking)
         {
-            SetCameraTarget(_walkingTarget);
+            SetCameraTarget(WalkingTarget);
         }
-        else if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Editing)
+        else if (GameplayModeManager.Instance.GamePlayMode == GamePlayMode.Editing)
         {
             SetCameraTarget(_editingTarget);
         }
@@ -42,6 +50,7 @@ public class CameraController : MonoBehaviour
     {
         if (this.cameraTarget != cameraTarget)
         {
+            print(cameraTarget.name);
             OnCameraTargetChanged?.Invoke(this, new CameraTargetArgs()
             {
                 cameraTarget = cameraTarget

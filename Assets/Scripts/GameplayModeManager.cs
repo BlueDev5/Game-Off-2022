@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameplayMode
+public enum GamePlayMode
 {
     HomeMenu,
     Walking,
@@ -12,9 +12,10 @@ public enum GameplayMode
 }
 public class GameplayModeManager : MonoBehaviour
 {
-    GameplayMode gameplayMode;
-    public Event<GameplayMode> OnGamePlayModeChanged;
-    public GameplayMode m_GameplayMode { get { return gameplayMode; } }
+    public GamePlayMode GamePlayMode;
+    private int _timeTaken;
+    private bool _isPlaying;
+    public Event<GamePlayMode> OnGamePlayModeChanged;
     public static GameplayModeManager Instance { get; private set; }
     private void Awake()
     {
@@ -28,15 +29,38 @@ public class GameplayModeManager : MonoBehaviour
         OnGamePlayModeChanged += UpdateSettings;
     }
 
-    private void UpdateSettings(GameplayMode lastMode)
+    public int TimeTaken { get => _timeTaken; }
+
+    private void UpdateSettings(GamePlayMode lastMode)
     {
-        if (gameplayMode == GameplayMode.Walking)
+        if (GamePlayMode == GamePlayMode.Walking)
         {
             Time.timeScale = 1;
         }
-        else if (gameplayMode == GameplayMode.Editing)
+        else if (GamePlayMode == GamePlayMode.Editing)
         {
-            Time.timeScale = 0.4f;
+            Time.timeScale = 0.2f;
+        }
+
+        if (GamePlayMode != GamePlayMode.HomeMenu && lastMode == GamePlayMode.HomeMenu)
+        {
+            _isPlaying = true;
+            StartCoroutine(CountTime());
+        }
+        else if (GamePlayMode == GamePlayMode.HomeMenu)
+        {
+            _isPlaying = false;
+            StopAllCoroutines();
+            _timeTaken = 0;
+        }
+    }
+
+    private IEnumerator<WaitForSeconds> CountTime()
+    {
+        while (true)
+        {
+            _timeTaken += 1;
+            yield return new WaitForSeconds(1);
         }
     }
 
@@ -44,24 +68,23 @@ public class GameplayModeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            print("Tab: " + gameplayMode.ToString());
-            if (gameplayMode == GameplayMode.Walking)
+            if (GamePlayMode == GamePlayMode.Walking)
             {
-                SetState(GameplayMode.Editing);
+                SetState(GamePlayMode.Editing);
             }
-            else if (gameplayMode == GameplayMode.Editing)
+            else if (GamePlayMode == GamePlayMode.Editing)
             {
-                SetState(GameplayMode.Walking);
+                SetState(GamePlayMode.Walking);
             }
         }
     }
 
-    public void SetState(GameplayMode mode)
+    public void SetState(GamePlayMode mode)
     {
-        if (gameplayMode == mode) return;
+        if (GamePlayMode == mode) return;
 
-        var lastMode = gameplayMode;
-        gameplayMode = mode;
+        var lastMode = GamePlayMode;
+        GamePlayMode = mode;
         OnGamePlayModeChanged?.Invoke(lastMode);
     }
 }

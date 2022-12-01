@@ -105,7 +105,7 @@ MonoBehaviour:
   Direction: {x: 0, y: 0}
   _whatIsObstacle:
     serializedVersion: 2
-    m_Bits: 3062
+    m_Bits: 7158
 --- !u!50 &4286782165058359619
 Rigidbody2D:
   serializedVersion: 4

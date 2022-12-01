@@ -29,8 +29,10 @@ namespace Game.Levels
         #region Variables
         public float LivesLeft;
         private int _currentLevelIndex = -1;
+        [SerializeField] private SceneCollection _winScreenCollection;
 
         [SerializeField] private List<SceneCollection> _levelCollections;
+        [SerializeField] private GameObject _restartLevelButton;
         #endregion
 
 
@@ -41,17 +43,35 @@ namespace Game.Levels
         #region Unity Calls
         void Update()
         {
-            if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.HomeMenu)
+            if (GameplayModeManager.Instance.GamePlayMode == GamePlayMode.HomeMenu)
             {
                 _currentLevelIndex = -1;
+                _restartLevelButton.SetActive(false);
+            }
+            else if (GameplayModeManager.Instance.GamePlayMode != GamePlayMode.Dead)
+            {
+                _restartLevelButton.SetActive(true);
             }
         }
         #endregion
 
 
         #region Functions
+        public void ReloadLevel()
+        {
+            SceneCollectionHandler.UnloadCurrentLoadedCollection();
+            LoadLevelAtCurrentIndex();
+        }
+
         public void LoadLevelAtCurrentIndex()
         {
+            if (_currentLevelIndex >= _levelCollections.Count)
+            {
+                SceneCollectionHandler.LoadSceneCollection(_winScreenCollection);
+                _currentLevelIndex = -1;
+                return;
+            }
+
             var level = _levelCollections[_currentLevelIndex];
 
             SceneCollectionHandler.LoadSceneCollection(level);

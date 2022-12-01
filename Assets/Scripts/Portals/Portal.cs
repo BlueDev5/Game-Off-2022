@@ -47,9 +47,10 @@ namespace Game.Portals
                 return;
             }
 
-            if (collision.TryGetComponent(out PlayerController playerController))
+            if (collision.CompareTag("Portal User"))
             {
-                UserUsePortal(playerController.transform);
+                print(collision.transform.name);
+                UserUsePortal(collision.transform);
             }
         }
 
@@ -61,7 +62,7 @@ namespace Game.Portals
             }
         }
 
-        void Awake()
+        void Start()
         {
             PortalManager.Instance.AddPortal(this);
         }
