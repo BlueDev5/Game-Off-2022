@@ -23,6 +23,7 @@ public class OrbitCamera : MonoBehaviour
 
     private void CameraController_OnSetCameraTarget(object sender, CameraController.CameraTargetArgs e)
     {
+        print(e.cameraTarget.name + "; Attached");
         target = e.cameraTarget;
     }
 

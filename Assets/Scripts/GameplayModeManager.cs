@@ -13,6 +13,8 @@ public enum GamePlayMode
 public class GameplayModeManager : MonoBehaviour
 {
     public GamePlayMode GamePlayMode;
+    private int _timeTaken;
+    private bool _isPlaying;
     public Event<GamePlayMode> OnGamePlayModeChanged;
     public static GameplayModeManager Instance { get; private set; }
     private void Awake()
@@ -27,6 +29,8 @@ public class GameplayModeManager : MonoBehaviour
         OnGamePlayModeChanged += UpdateSettings;
     }
 
+    public int TimeTaken { get => _timeTaken; }
+
     private void UpdateSettings(GamePlayMode lastMode)
     {
         if (GamePlayMode == GamePlayMode.Walking)
@@ -36,6 +40,27 @@ public class GameplayModeManager : MonoBehaviour
         else if (GamePlayMode == GamePlayMode.Editing)
         {
             Time.timeScale = 0.2f;
+        }
+
+        if (GamePlayMode != GamePlayMode.HomeMenu && lastMode == GamePlayMode.HomeMenu)
+        {
+            _isPlaying = true;
+            StartCoroutine(CountTime());
+        }
+        else if (GamePlayMode == GamePlayMode.HomeMenu)
+        {
+            _isPlaying = false;
+            StopAllCoroutines();
+            _timeTaken = 0;
+        }
+    }
+
+    private IEnumerator<WaitForSeconds> CountTime()
+    {
+        while (true)
+        {
+            _timeTaken += 1;
+            yield return new WaitForSeconds(1);
         }
     }
 

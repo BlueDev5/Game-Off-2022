@@ -50,6 +50,7 @@ public class CameraController : MonoBehaviour
     {
         if (this.cameraTarget != cameraTarget)
         {
+            print(cameraTarget.name);
             OnCameraTargetChanged?.Invoke(this, new CameraTargetArgs()
             {
                 cameraTarget = cameraTarget
