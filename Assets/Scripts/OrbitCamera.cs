@@ -33,12 +33,12 @@ public class OrbitCamera : MonoBehaviour
             return;
         }
 
-        if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Editing)
+        if (GameplayModeManager.Instance.GamePlayMode == GamePlayMode.Editing)
         {
             zPosition = _levelFocusZPos;
             transform.position = Vector3.SmoothDamp(transform.position, new Vector3(0, 0, zPosition), ref velocity, dampTime * Time.timeScale);
         }
-        else if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.Walking)
+        else if (GameplayModeManager.Instance.GamePlayMode == GamePlayMode.Walking)
         {
             zPosition = _playerFocusZPos;
             transform.position = Vector3.SmoothDamp(transform.position, new Vector3(target.position.x, target.position.y, zPosition), ref velocity, dampTime * Time.timeScale);

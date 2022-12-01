@@ -41,7 +41,7 @@ namespace Game.Levels
         #region Unity Calls
         void Update()
         {
-            if (GameplayModeManager.Instance.m_GameplayMode == GameplayMode.HomeMenu)
+            if (GameplayModeManager.Instance.GamePlayMode == GamePlayMode.HomeMenu)
             {
                 _currentLevelIndex = -1;
             }

@@ -28,7 +28,7 @@ namespace Game.UI
             Levels.LevelManager.Instance.LoadLevel(0);
 
             // Set State to the Gameplay Mode Manager.
-            GameplayModeManager.Instance.SetState(GameplayMode.Walking);
+            GameplayModeManager.Instance.SetState(GamePlayMode.Walking);
         }
 
         public void Quit()

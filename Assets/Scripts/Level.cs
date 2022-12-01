@@ -22,6 +22,7 @@ namespace Game.Levels
             var player = GameObject.FindObjectOfType<Player.PlayerController>();
             _cameraController.WalkingTarget = player.transform;
             player.transform.position = _playerStartPosition.position;
+            GameplayModeManager.Instance.GamePlayMode = GamePlayMode.Walking;
         }
         #endregion
 

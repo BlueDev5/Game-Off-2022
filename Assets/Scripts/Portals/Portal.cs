@@ -61,7 +61,7 @@ namespace Game.Portals
             }
         }
 
-        void Awake()
+        void Start()
         {
             PortalManager.Instance.AddPortal(this);
         }

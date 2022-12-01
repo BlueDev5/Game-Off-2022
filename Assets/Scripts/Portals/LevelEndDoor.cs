@@ -51,7 +51,6 @@ namespace Game.Portals
         {
             if (_animationSpriteSheets.Length == 0)
             {
-                print("Something");
                 Levels.LevelManager.Instance.LoadNextLevel();
                 return;
             }

@@ -36,6 +36,8 @@ namespace Game.Player
 
         [SerializeField] private SceneCollection _deathScreenCollection;
 
+        public Empty OnPlayerDeath;
+
         private bool _isGrounded;
         private Rigidbody2D _rigidbody;
 
@@ -72,7 +74,7 @@ namespace Game.Player
                 velocityX = _rigidbody.velocity.x
             });
 
-            if (GameplayModeManager.Instance.m_GameplayMode != GameplayMode.Walking)
+            if (GameplayModeManager.Instance.GamePlayMode != GamePlayMode.Walking)
             {
                 return;
             }
@@ -93,7 +95,7 @@ namespace Game.Player
 
         void Update()
         {
-            if (GameplayModeManager.Instance.m_GameplayMode != GameplayMode.Walking)
+            if (GameplayModeManager.Instance.GamePlayMode != GamePlayMode.Walking)
             {
                 return;
             }
@@ -125,6 +127,8 @@ namespace Game.Player
         public void Death()
         {
             SceneCollectionHandler.LoadSceneCollection(_deathScreenCollection);
+            GameplayModeManager.Instance.GamePlayMode = GamePlayMode.Dead;
+            OnPlayerDeath?.Invoke();
         }
 
         void Jump()

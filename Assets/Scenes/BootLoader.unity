@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedc0e5bbb08ff942a906036999c417a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GamePlayMode: 0
 --- !u!4 &163917329
 Transform:
   m_ObjectHideFlags: 0
@@ -313,7 +314,7 @@ MonoBehaviour:
   LivesLeft: 3
   _levelCollections:
   - {fileID: 11400000, guid: c53c383f7f9549f48b921988793508d8, type: 2}
-  - {fileID: 11400000, guid: baecccadef9e14e438100052210696d9, type: 2}
+  - {fileID: 11400000, guid: 12f911a64f733e64dad96b28341ea321, type: 2}
 --- !u!4 &2110505260
 Transform:
   m_ObjectHideFlags: 0
