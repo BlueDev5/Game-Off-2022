@@ -787,6 +787,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1777501457, guid: 9181edf82453acf418818e0a36e0d480, type: 3}
+      propertyPath: WhatCanGoThroughPortal.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 8973371813603160969, guid: 9181edf82453acf418818e0a36e0d480,
         type: 3}
       propertyPath: m_Pivot.x
